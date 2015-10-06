@@ -1,4 +1,5 @@
 <?php namespace App\Http\Controllers;
+use Request;
 
 class HomeController extends Controller {
 
@@ -27,6 +28,14 @@ class HomeController extends Controller {
 	public function index()
 	{
 		return view('home');
+	}
+	
+	public function borrow1(){
+	 $data =" ";
+		if(Request::ajax()){
+			$data="pass";
+		}
+		return $data;
 	}
 
 }

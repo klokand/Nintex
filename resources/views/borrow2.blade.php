@@ -1,4 +1,4 @@
-<div id='borrow1-popup' class="needpopup" data-needpopup-options="borrow1">
+<div id='borrow2-popup' class="needpopup" data-needpopup-options="borrow2">
 	<form  method="POST" action="/borrow/user">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 		<div class="form-group">

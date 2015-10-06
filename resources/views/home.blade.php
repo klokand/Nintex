@@ -18,4 +18,5 @@
 	</div>
 </div>
 @include('borrow1')
+@include('borrow2')
 @endsection

@@ -53,17 +53,21 @@
 	<script src="/js/needpopup.min.js"></script>
 	<script src="/js/jquery.mobile-1.4.5.min.js"></script>
 			<script>  
-			/*
-			needPopup.config.custom = {
+			needPopup.config.borrow1 = {
 				'removerPlace': 'outside',
 				'closeOnOutside': false,
-				onShow: function() {
-					console.log('needPopup is shown');
-				},
 				onHide: function() {
-					console.log('needPopup is hidden');
+				var url ="/borrow/user";
+				var token =$('input[name=_token]').val();
+				var $post ={};
+				$post._token = token;
+					$.ajax({
+						type:"POST",
+						data:$post,
+						cashe:false,
+					});
 				}
-			};*/
+			};
 			needPopup.init();
 		</script>
 </body>
