@@ -59,12 +59,18 @@
 				onHide: function() {
 				var url ="/borrow/user";
 				var token =$('input[name=_token]').val();
+				var email =$('input[name=email]').val();
 				var $post ={};
 				$post._token = token;
+				$post.email = email;
 					$.ajax({
 						type:"POST",
+						url:url,
 						data:$post,
 						cashe:false,
+						success:function(result){
+							$("#change").html(result);
+						}
 					});
 				}
 			};

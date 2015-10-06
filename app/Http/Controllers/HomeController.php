@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers;
 use Request;
+use Input;
 
 class HomeController extends Controller {
 
@@ -33,7 +34,8 @@ class HomeController extends Controller {
 	public function borrow1(){
 	 $data =" ";
 		if(Request::ajax()){
-			$data="pass";
+			$email = Input::get("email");
+			$data=$email;
 		}
 		return $data;
 	}
