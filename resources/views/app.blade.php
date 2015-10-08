@@ -52,7 +52,7 @@
 	<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<script src="/js/needpopup.min.js"></script>
 	<script src="/js/jquery.mobile-1.4.5.min.js"></script>
-			<script>  
+			<script>
 			needPopup.config.borrow1 = {
 				'removerPlace': 'outside',
 				'closeOnOutside': false,
@@ -60,21 +60,102 @@
 				var url ="/borrow/user";
 				var token =$('input[name=_token]').val();
 				var email =$('input[name=email]').val();
+				var name =$('input[name=name]').val();
 				var $post ={};
 				$post._token = token;
 				$post.email = email;
+				$post.name = name;
 					$.ajax({
 						type:"POST",
 						url:url,
 						data:$post,
 						cashe:false,
 						success:function(result){
-							$("#change").html(result);
+							$("#name").html(result["name"]);
+							$("#email").html(result["email"]);
+							$("#form-name").val(result["name"]);
+							$("#form-email").val(result["email"]);
+							console.log(result["id"]);
 						}
 					});
 				}
 			};
 			needPopup.init();
+			$("#userSubmit").click(function(){
+				$( "#borrow1-form" ).submit(function( event ) {
+					var valide = true;
+					if (!$("#Name").val()) {
+						$( "span" ).text( "Name is not valid!" ).show().fadeOut( 3000 );
+						valide = false;
+						event.preventDefault();
+						console.log("name needed");
+					}if (!$("#Email1").val()) {
+						$( "span" ).text( "Email is not valid!" ).show().fadeOut( 3000 );
+						valide = false;
+						event.preventDefault();
+						console.log("email needed");
+					}if(valide == true){
+						console.log('borrow2');
+						return
+					}
+				});
+			});
+			 $("#borrowSubmit").click(function(){
+					$( "#borrow2-form" ).submit(function( event ) {
+					var valide = true;
+					if (!$( "#title" ).val()) {
+						$( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
+						valide = false;
+						event.preventDefault();
+					}if (!$( "#author" ).val()) {
+						$( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
+						valide = false;
+						event.preventDefault();
+					}if (!$( "#barcode" ).val()) {
+						$( "span" ).text( "Not valid!" ).show().fadeOut( 1000 );
+						valide = false;
+						event.preventDefault();
+					}if (!$("#form-name").val()) {
+						$( "span" ).text( "Name is not valid!" ).show().fadeOut( 2000 );
+						valide = false;
+						event.preventDefault();
+						console.log("name needed");
+					}if (!$("#form-email").val()) {
+						$( "span" ).text( "Email is not valid!" ).show().fadeOut( 2000 );
+						valide = false;
+						event.preventDefault();
+						console.log("email needed");
+					}if(valide == true){						
+						var url ="/borrow/borrow";
+						var token =$('input[name=_token]').val();
+						var email =$('input[name=bemail]').val();
+						var name =$('input[name=bname]').val();
+						var title =$('input[name=title]').val();
+						var author =$('input[name=author]').val();
+						var barcode =$('input[name=barcode]').val();
+						var $post ={};
+						$post._token = token;
+						$post.email = email;
+						$post.name = name;
+						$post.title = title;
+						$post.author = author;
+						$post.barcode = barcode;
+						$.ajax({
+							type:"POST",
+							url:url,
+							data:$post,
+							cashe:false,
+							success:function(result){
+								$( "span" ).text( "Submiting..." ).show();
+								console.log('submit');
+								console.log('result');
+								//location.reload();
+								//document.location.href="/";
+						}
+					});
+					}
+				});
+			});
 		</script>
 </body>
 </html>

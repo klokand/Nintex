@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBooksTable extends Migration {
+class CreateUsersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,18 +12,16 @@ class CreateBooksTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('books', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
-			$table->string('author');
-			$table->string('isbn');
+			$table->string('name');
+			$table->string('email')->unique();
 			$table->integer('validationNumber')->default(0);
 			$table->integer('status')->default(1);
 			$table->timestamps();
 		});
 	}
-
 	/**
 	 * Reverse the migrations.
 	 *
@@ -31,7 +29,7 @@ class CreateBooksTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('books');
+		Schema::drop('users');
 	}
 
 }

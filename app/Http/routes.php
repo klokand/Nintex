@@ -14,4 +14,5 @@
 Route::get('/', 'HomeController@index');
 
 Route::post('/borrow/user','HomeController@borrow1');
+Route::post('/borrow/borrow','HomeController@borrow2');
 

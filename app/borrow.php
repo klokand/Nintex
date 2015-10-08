@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class borrow extends Model {
+class Borrow extends Model {
 
 	protected $fillable = array('id','user_id','book_id','returned');
 	
