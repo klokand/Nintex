@@ -150,7 +150,7 @@
 								console.log('submit');
 								console.log('result');
 								//location.reload();
-								//document.location.href="/";
+								document.location.href="/";
 						}
 					});
 					}

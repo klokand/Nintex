@@ -9,6 +9,7 @@
 							</tr>
 						</thead>
 						<tbody>
+							{!!$borrowList!!}
 							<tr>
 								<td>Patterns of Enterprise Application Architecture</td>
 								<td>Martin Fowler</td>

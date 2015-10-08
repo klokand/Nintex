@@ -30,8 +30,16 @@ class HomeController extends Controller {
 	 * @return Response
 	 */
 	public function index()
-	{
-		return view('home');
+	{	
+		$borrowList ="";
+		$borrows = Borrow::all();
+		foreach($borrows as $item){
+			$borrowList = $borrowList."<tr>
+								<td>".$item->book->title."</td><td>".$item->book->author."</td>
+								<td>".$item->user->name."</td><td>".$item->created_at."</td><td>Return Book.</td>
+							</tr>";
+		}
+		return view('home')->with(compact('borrowList'));
 	}
 	
 	public function borrow1(){

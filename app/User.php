@@ -9,5 +9,4 @@ class User extends Model {
 	public function borrow(){
 		return $this->hasMany('App\borrow');
 	}
-
 }
